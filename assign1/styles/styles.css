@@ -1,0 +1,15 @@
+input.correct {
+  border-color: green;
+}
+
+input.error {
+  border-color: red;
+}
+
+div.correct {
+  color: green;
+}
+
+div.error {
+  color: red;
+}
