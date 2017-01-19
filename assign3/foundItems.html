@@ -3,8 +3,10 @@
   <li ng-repeat="item in foundItemsDirCtrl.found" class="list-group-item">
     <strong>{{item.name}}</strong> <span class="label label-default">{{item.short_name}}</span><br>
     <i>{{item.description}}</i><br>
-    <button class="btn btn-xs btn-primary" ng-click="foundItemsDirCtrl.onRemove({index: $index})">Don't want this one! <span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+    <button class="btn btn-xs btn-danger" ng-click="foundItemsDirCtrl.onRemove({index: $index})">
+      Don't want this one! 
+      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+    </button>
   </li>
-  </div>
 </ul>
-<div ng-if="foundItemsDirCtrl.found.length < 1" class="alert alert-warning" role="alert">Nothing found</div>
+<div ng-if="foundItemsDirCtrl.msg.length > 0" class="alert alert-warning" role="alert">{{foundItemsDirCtrl.msg}}</div>

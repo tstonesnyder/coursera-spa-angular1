@@ -12,8 +12,9 @@ function FoundItemsDirective () {
   var ddo = {
     templateUrl: 'foundItems.html',
     scope: {
-      found: '<',      // stores array of found items
-      onRemove: '&'    // bind to function on parent controller
+      found: '<',       // array of found items
+      onRemove: '&',    // bind to function on parent controller
+      msg: '<'          // message about no items found or error occurring
     },
     controller: FoundItemsDirectiveController,
     controllerAs: 'foundItemsDirCtrl',  // Use this name in directive template
@@ -32,14 +33,16 @@ NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController (MenuSearchService) {
   var ctrl = this;
 
-  // The search term will be entered in HTML page by user:
-  ctrl.searchTerm = '';
-  ctrl.found = [];
+  ctrl.searchTerm = '';  // search term will be entered in HTML page by user
+  ctrl.found = [];       // array of found menu items
+  ctrl.msg = "";         // warning message (DON'T DISPLAY MSG WHEN PAGE FIRST LOADS)
 
   ctrl.filterMenuItems = function () {
     // console.log('NarrowItDownController.filterMenuItems:');
     if (ctrl.searchTerm.length < 1) {
       ctrl.found = [];
+      // Display msg if user clicks the button with the search term blank
+      ctrl.msg = "Nothing found";
     } else {
       // console.log('About to call MenuSearchService.getMatchedMenuItems with arg = ' + ctrl.searchTerm);
       // Store the resulting array of objects in a property on the controller instance:
@@ -47,8 +50,15 @@ function NarrowItDownController (MenuSearchService) {
       promise.then(function(response) {
         // console.log('Returned from MenuSearchService.getMatchedMenuItems() with response:', response);
         ctrl.found = response;
+        // Display msg if no items found
+        if (ctrl.found.length === 0) {
+          ctrl.msg = "Nothing found";
+        } else {
+          ctrl.msg  = "";
+        }
       })
       .catch(function (error) {
+        ctrl.msg = "Error getting menu items!";
         console.log("Error getting menu items: ", error);
       });
     }
