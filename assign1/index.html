@@ -25,10 +25,10 @@
         class="form-control {{errorClass}}"
         ng-model="lunchItems"
       >
-      <p class="help-block">NOTE: Blank items will not be counted.</p>
+      <p class="help-block">NOTE: Blank/empty items (e.g., ", ,") will not be included in the count.</p>
     </div>
     <div class="form-group">
-      <button class="btn btn-default" ng-click="checkIfTooMuch()">Check If Too Much</button>
+      <button class="btn btn-info" ng-click="checkIfTooMuch()">Check If Too Much</button>
     </div>
     <div class="form-group message {{errorClass}}">
       <!-- Your message can go here. -->
