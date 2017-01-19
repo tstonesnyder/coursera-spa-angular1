@@ -5,7 +5,9 @@ angular.module('NarrowItDownApp', [])
 .controller('NarrowItDownController', NarrowItDownController)
 .service('MenuSearchService', MenuSearchService)
 .directive('foundItems', FoundItemsDirective)
-.constant('ApiBasePath', "http://davids-restaurant.herokuapp.com");
+// GEt an error when run on GitHub.io about mixed content when using 'http', so using 'https' instead:
+// .constant('ApiBasePath', "http://davids-restaurant.herokuapp.com");
+.constant('ApiBasePath', "https://davids-restaurant.herokuapp.com");
 
 
 function FoundItemsDirective () {
@@ -58,8 +60,8 @@ function NarrowItDownController (MenuSearchService) {
         }
       })
       .catch(function (error) {
-        ctrl.msg = "Error getting menu items!";
-        console.log("Error getting menu items: ", error);
+        ctrl.msg = "Error getting menu items from server!";
+        console.log("Error getting menu items from server: ", error);
       });
     }
     // console.log("End of NarrowItDownController.filterMenuItems");
