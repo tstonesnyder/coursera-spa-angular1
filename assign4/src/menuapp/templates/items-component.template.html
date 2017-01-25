@@ -1,0 +1,24 @@
+<ol class="breadcrumb">
+  <li><a ui-sref="home">Home</a></li>
+  <li><a ui-sref="categories">Categories</a></li>
+  <li class="active">{{ $ctrl.categNamex }}</li>
+</ol>
+
+<h2>{{ $ctrl.categNamex }}</h2>
+
+<ul class="list-group">
+  <li ng-repeat="item in $ctrl.itemsx" class="list-group-item">
+    <h4 class="list-group-item-heading">
+      <span class="badge">{{ item.short_name }}</span>  {{ item.name }}
+    </h4> 
+    <!-- <p>${{ item.price_large }} for {{ item.large_portion_name }}, ${{ item.price_small }} for {{ item.small_portion_name }}</p> -->
+    <p class="list-group-item-text">
+      {{ item.price_large | currency}}
+      <span ng-if="item.large_portion_name"> for {{ item.large_portion_name }}</span>
+      <span ng-if="item.price_small"> / {{ item.price_small | currency}}
+        <span ng-if="item.small_portion_name"> for {{ item.small_portion_name }}</span>
+      </span>
+    </p>
+    <p class="list-group-item-text"><em>{{ item.description }}</em></p>
+  </li>
+</ul>

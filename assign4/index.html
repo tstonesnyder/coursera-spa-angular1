@@ -1,9 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="MenuApp">
 <head>
-  <title>Assignment 4</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <title>Assignment 4: Menu App</title>
 </head>
 <body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="home">David's Restaurant</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+<!--     <div class="page-header">
+      <h1>David's Restaurant</h1>
+    </div> -->
+    <div class="row">
+      <div class="col-xs-12">
+        <ui-view></ui-view>
+      </div>
+    </div>
+  </div>
+
+  <!-- Libraries -->
+  <script src="lib/angular.min.js"></script>
+  <script src="lib/angular-ui-router.min.js"></script>
+
+  <!-- Modules -->
+  <script src="src/menuapp/menuapp.module.js"></script>
+  <script src="src/data/data.module.js"></script>
+
+  <!-- Routes -->
+  <script src="src/routes.js"></script>
+
+  <!-- 'MenuApp' module artifacts -->
+  <script src="src/menuapp/categories.controller.js"></script>
+  <script src="src/menuapp/categories.component.js"></script>
+  <script src="src/menuapp/items.controller.js"></script>
+  <script src="src/menuapp/items.component.js"></script>
+
+  <!-- 'Data' module artifacts -->
+  <script src="src/data/menudata.service.js"></script>
 
 </body>
 </html>
